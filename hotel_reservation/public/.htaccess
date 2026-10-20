@@ -1,0 +1,12 @@
+# Enable mod_rewrite
+RewriteEngine On
+
+# Set the base folder (your public folder)
+RewriteBase /hotel_reservation/public/
+
+# If the request is NOT a real file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect all requests to index.php with the URL as a GET parameter
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
